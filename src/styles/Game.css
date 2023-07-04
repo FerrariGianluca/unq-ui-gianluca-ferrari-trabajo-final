@@ -3,19 +3,43 @@
   padding: 0;
 }
 
+.title{
+  font-size: 50px;
+  text-align: center;
+  background-color: rgb(156, 192, 110);
+}
+
 .container{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgb(156, 192, 110);
   height: 100vh;
 }
 
 .panel{  
-  margin: 50px
+  margin: 0 50px;
 }
 
-.titulo{
+.player{
   font-size: 25px;
   text-align: center;
+}
+
+.play{
+  align-self: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 75px;
+}
+
+.choice{
+  align-self: center;
+  background-color: #FFF;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px solid #000;
 }

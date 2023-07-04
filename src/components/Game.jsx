@@ -20,17 +20,24 @@ const options = [
 const Game = () => {
 
   return (
-    <div className="container">
-      <div className="panel">
-        <div className="titulo">Jugador 1</div>
-        <OptionsPanel options={options} />
+    <>
+      <div className="title">Piedra, Papel, Tijera, Lagarto, Spock</div>
+      <div className="container">
+        <div className="panel">
+          <div className="player">Jugador 1</div>
+          <OptionsPanel options={options} />
+        </div>
+        <div className="play">
+          <div className="choice 1"></div>
+          <div className="">VS</div>
+          <div className="choice 2"></div>
+        </div>
+        <div className="panel">
+          <div className="player">Jugador 2</div>
+          <OptionsPanel options={options} />
+        </div>
       </div>
-      <div className="panel">
-        <div className="titulo">Jugador 2</div>
-        <OptionsPanel options={options} />
-      </div>
-    </div>
-    
+    </>
   );
 };
 
