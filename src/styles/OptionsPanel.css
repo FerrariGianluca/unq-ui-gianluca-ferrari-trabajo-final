@@ -1,0 +1,20 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.options-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 15px;
+  gap: 10px;
+  height: 100%;
+}
+
+.option{
+  background-color: #FFF;
+  border: 1px solid #000;
+  border-radius: 50%;
+  padding: 25px
+}
