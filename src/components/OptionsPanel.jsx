@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "../styles/OptionsPanel.css";
 
-const OptionsPanel = ( {options, onOptionSelect} ) => {
+const OptionsPanel = ( {options, onOptionSelect, isDisabled, isLeft} ) => {
 
-  const [choice, setChoice] = useState(null);
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(isDisabled);
 
   const handleChoice = (option) => {
     onOptionSelect(option);
@@ -20,7 +19,7 @@ const OptionsPanel = ( {options, onOptionSelect} ) => {
           name={option.name}
           disabled={disabled}
           onClick={() => handleChoice(option)}>
-          <option.emoji style={{color: option.color}} size={50} />
+          <option.emoji style={{color: option.color, transform: isLeft ? 'scaleX(-1)' : 'none'}} size={50} />
         </button>
       ))}
     </div>
