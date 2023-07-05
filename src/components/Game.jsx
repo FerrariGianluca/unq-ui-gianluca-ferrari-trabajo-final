@@ -19,16 +19,25 @@ const options = [
 
 const Game = () => {
 
+  const [choice1, setChoice1] = useState(null);
+  const [choice2, setChoice2] = useState(null);
+
+  const handleOptionSelect = (optionId) => {
+    setChoice1(optionId);
+  }
+
   return (
     <>
       <div className="title">Piedra, Papel, Tijera, Lagarto, Spock</div>
       <div className="container">
         <div className="panel">
           <div className="player">Jugador 1</div>
-          <OptionsPanel options={options} />
+          <OptionsPanel options={options} onOptionSelect={handleOptionSelect} />
         </div>
         <div className="play">
-          <div className="choice 1"></div>
+          <div className="choice 1">
+            {choice1 && <choice1.emoji style={{color: choice1.color, margin: 'auto'}} size={100}/>}
+          </div>
           <div className="">VS</div>
           <div className="choice 2"></div>
         </div>

@@ -12,6 +12,14 @@
   height: 100%;
 }
 
+.disabled{
+  background-color: rgb(136, 136, 136);
+  border: 1px solid #FFF;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
 .option{
   background-color: #FFF;
   border: 1px solid #000;
