@@ -1,31 +1,77 @@
 [
-  { "id": 0, 
+  { 
+    "id": 0, 
     "name": "Piedra", 
     "emoji": "FaHandRock", 
     "color": "#FF8282", 
-    "victims": [2, 3] 
+    "victims": [
+      { 
+        "id": 2, 
+        "action": "aplasta a"
+      },
+      {
+        "id": 3,
+        "action": "aplasta a"}
+    ] 
   },
-  { "id": 1, 
+  { 
+    "id": 1, 
     "name": "Papel", 
     "emoji": "FaHandPaper", 
     "color": "#FFDE5B", 
-    "victims": [0, 4] 
+    "victims": [
+      { 
+        "id": 0, 
+        "action": "tapa a"
+      },
+      {
+        "id": 4,
+        "action": "desautoriza a"}
+    ] 
   },
-  { "id": 2, 
+  { 
+    "id": 2, 
     "name": "Tijera", 
     "emoji": "FaHandScissors", 
     "color": "#E681FF", 
-    "victims": [1, 3] 
+    "victims": [
+      { 
+        "id": 1, 
+        "action": "corta a"
+      },
+      {
+        "id": 3,
+        "action": "decapita a"}
+    ] 
   },
-  { "id": 3, 
+  { 
+    "id": 3, 
     "name": "Lagarto", 
     "emoji": "FaHandLizard", 
     "color": "#8BDF8B", 
-    "victims": [1, 4] 
+    "victims": [
+      { 
+        "id": 1, 
+        "action": "devora a"
+      },
+      {
+        "id": 4,
+        "action": "envenena a"}
+    ]  
   },
-  { "id": 4, 
+  { 
+    "id": 4, 
     "name": "Spock", 
     "emoji": "FaHandSpock", 
     "color": "#81B4FF", 
-    "victims": [0, 2] }
+    "victims": [
+      { 
+        "id": 0, 
+        "action": "vaporiza a"
+      },
+      {
+        "id": 2,
+        "action": "rompe a"}
+    ]  
+  }
 ]

@@ -40,7 +40,6 @@ const Game = () => {
   const handleOptionSelect = (option) => {
     setChoice1(option);
     setTurn(2);
-    console.log("Asigna el ID a choice1")
   }
 
   const getResult = () => {
@@ -73,7 +72,6 @@ const Game = () => {
       setTimeout(() => {
         setChoice2(randomOption)
         setTurn(0)
-        console.log("Asigna el ID a choice2")
       }, 1500);
     }
   }, [turn]);
