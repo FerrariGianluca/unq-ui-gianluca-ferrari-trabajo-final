@@ -8,21 +8,14 @@ import {
 from "react-icons/fa";
 import OptionsPanel from "./OptionsPanel";
 import "../styles/Game.css";
-import optionsJSON from "../options.json"
-
-/*const options = [
-  { id: 0, name: "Piedra", emoji: FaHandRock, color: "#FF8282", victims: [2, 3] },
-  { id: 1, name: "Papel", emoji: FaHandPaper, color: "#FFDE5B", victims: [0, 4] },
-  { id: 2, name: "Tijera", emoji: FaHandScissors, color: "#E681FF", victims: [1, 3] },
-  { id: 3, name: "Lagarto", emoji: FaHandLizard, color: "#8BDF8B", victims: [1, 4] },
-  { id: 4, name: "Spock", emoji: FaHandSpock, color: "#81B4FF", victims: [0, 2] },
-]*/
+import optionsJSON from "../data/options.json"
 
 const Game = () => {
   const [choice1, setChoice1] = useState(null);
   const [choice2, setChoice2] = useState(null);
   const [turn, setTurn] = useState(1);
   const [result, setResult] = useState("");
+  const [action, setAction] = useState("");
 
   const iconMap = {
     FaHandRock,
@@ -42,25 +35,48 @@ const Game = () => {
     setTurn(2);
   }
 
+  //Indica si la opción1 le gana a la opción2
+  const beats = (selection1, selection2) => {
+    return selection1.victims.some(victim => victim.id === selection2.id)
+  }
+
+  //Devuelve la acción que le realiza la opción ganadora a la opción perdedora
+  const findAction = (selection1, selection2) => {
+    return selection1.victims[selection1.victims.findIndex(a => a.id === selection2.id)].action
+  }
+
   const getResult = () => {
-    if (choice1.victims.some(item => item.id === choice2.id)){//choice1.victims.includes(choice2.id)){
-      return (
-        <div style={{textAlign: 'center'}}>
-          <p>{choice1.name} acción a {choice2.name}</p>
-          <p>Gana el jugador</p>
-        </div>
-      )
-    } else if (choice2.victims.includes(choice1.id)){
-      return "Gana la computadora"
+    if (beats(choice1, choice2)){
+      return "Gana el Jugador 1"
+    } else if (beats(choice2, choice1)){
+      return "Gana el Jugador 2"
     } else {
       return "Empate"
     }
   }
 
+  const getAction = () => {
+    if (beats(choice1, choice2)){
+      return (
+        <div style={{textAlign: 'center'}}>
+            <span style={{backgroundColor: choice1.color}}>{choice1.name}</span> {findAction(choice1, choice2)} <span style={{backgroundColor: choice2.color}}>{choice2.name}</span>
+        </div>
+      )
+    } else if (beats(choice2, choice1)){
+      return (
+        <div style={{textAlign: 'center'}}>
+          <span style={{backgroundColor: choice2.color}}>{choice2.name}</span> {findAction(choice2, choice1)} <span style={{backgroundColor: choice1.color}}>{choice1.name}</span>
+        </div>
+      )
+    } else {
+      return ""
+    }
+  }
+
   useEffect(() => {
     if(turn===0){
-      setResult(getResult())
-      console.log(result)
+      setResult(getResult());
+      setAction(getAction());
     }
   }, [turn])
 
@@ -78,7 +94,7 @@ const Game = () => {
 
   return (
     <>
-      <div className="title">Piedra, Papel, Tijera, Lagarto, Spock</div>
+      <div className="title">Piedra - Papel - Tijera - Lagarto - Spock</div>
       <div className="container">
         <div className="panel">
           <div className="player">Jugador 1</div>
@@ -89,20 +105,23 @@ const Game = () => {
             isLeft={true}
           />
         </div>
-        <div className="play-container">
-          <div className="turn-info">
-            { turn === 1 ? 'Es el turno del jugador'
-            : turn === 2 ? 'Es el turno de la computadora'
+        <div className="game-container">
+          <div className="game-info">
+            { turn === 1 ? 'Es el turno del Jugador 1'
+            : turn === 2 ? 'Es el turno del Jugador 2'
             : result }
           </div>
           <div className="board">
             <div className="choice">
               {choice1 && <choice1.emoji style={{color: choice1.color, margin: 'auto', transform: 'scaleX(-1)'}} size={100}/>}
             </div>
-            <div className="">VS</div>
+            <div className="vs">VS</div>
             <div className="choice">
               {choice2 && <choice2.emoji style={{color: choice2.color, margin: 'auto'}} size={100}/>}
             </div>
+          </div>
+          <div className="game-info">
+            { result && <div>{action}</div>}
           </div>
         </div>
         <div className="panel">

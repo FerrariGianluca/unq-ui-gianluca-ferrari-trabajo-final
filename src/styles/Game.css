@@ -1,10 +1,11 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .title{
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
   background-color: rgb(156, 192, 110);
   padding: 15px;
@@ -16,6 +17,8 @@
   align-items: flex-start;
   background-color: rgb(156, 192, 110);
   height: 100vh;
+  position: fixed;
+  width: 100%
 }
 
 .panel{  
@@ -27,18 +30,20 @@
   text-align: center;
 }
 
-.play-container{
+.game-container{
   align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 175px;
+  min-height: 500px;
   width: 100%;
   gap: 50px;
 }
 
-.turn-info{
+.game-info{
   font-size: 50px;
+  padding: 30px;
 }
 
 .board{
@@ -58,4 +63,14 @@
   height: 150px;
   border-radius: 50%;
   border: 1px solid #000;
+}
+
+.vs{
+  font-size: 75px;
+}
+
+span{
+  padding: 5px;
+  color: #FFF;
+  
 }
