@@ -16,6 +16,7 @@ const Game = () => {
   const [turn, setTurn] = useState(1);
   const [result, setResult] = useState("");
   const [action, setAction] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const iconMap = {
     FaHandRock,
@@ -73,13 +74,20 @@ const Game = () => {
     }
   }
 
+  const handleRestart = () => {
+    setChoice1(null);
+    setChoice2(null);
+    setTurn(1);
+    setResult("");
+    setAction("");
+  }
+
   useEffect(() => {
     if(turn===0){
       setResult(getResult());
       setAction(getAction());
-
     }
-  }, [turn])
+  }, [turn, choice1, choice2])
 
   useEffect(() => {
     if (turn===2){
@@ -102,8 +110,9 @@ const Game = () => {
           <OptionsPanel 
             options={options} 
             onOptionSelect={handleOptionSelect}
-            isDisabled={false}
+            isDisabled={turn !== 1}
             isLeft={true}
+            turn={turn}
           />
         </div>
         <div className="game-container">
@@ -123,7 +132,7 @@ const Game = () => {
           </div>
           <div className="game-info">
             { result && <div>{action}</div>}
-            { result && <button>Volver a jugar</button>}
+            { result && <button onClick={handleRestart}>Volver a jugar</button>}
           </div>
         </div>
         <div className="panel">
@@ -131,7 +140,8 @@ const Game = () => {
           <OptionsPanel 
             options={options} 
             isDisabled={true}
-            isLeft={false} />
+            isLeft={false}
+            turn={turn} />
         </div>
       </div>
     </>
