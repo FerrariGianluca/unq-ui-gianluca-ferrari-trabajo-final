@@ -17,6 +17,10 @@ const Game = () => {
   const [result, setResult] = useState("");
   const [action, setAction] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
+  const [total, setTotal] = useState(0);
+  const [jugador1, setJugador1] = useState(0);
+  const [jugador2, setJugador2] = useState(0);
+  const [empate, setEmpate] = useState(0);
 
   const iconMap = {
     FaHandRock,
@@ -47,11 +51,15 @@ const Game = () => {
   }
 
   const getResult = () => {
+    setTotal(total + 1)
     if (beats(choice1, choice2)){
+      setJugador1(jugador1 + 1);
       return "Gana el Jugador 1"
     } else if (beats(choice2, choice1)){
+      setJugador2(jugador2 + 1);
       return "Gana el Jugador 2"
     } else {
+      setEmpate(empate + 1);
       return "Empate"
     }
   }
@@ -83,11 +91,11 @@ const Game = () => {
   }
 
   useEffect(() => {
-    if(turn===0){
+    if(turn===0 && !result){
       setResult(getResult());
       setAction(getAction());
     }
-  }, [turn, choice1, choice2])
+  }, [turn])
 
   useEffect(() => {
     if (turn===2){
@@ -133,6 +141,12 @@ const Game = () => {
           <div className="game-info">
             { result && <div>{action}</div>}
             { result && <button onClick={handleRestart}>Volver a jugar</button>}
+          </div>
+          <div className="stats">
+            <div>Total partidas jugadas: <span className="contador">{total}</span></div>
+            <div>Jugador 1: <span className="contador">{jugador1}</span></div>
+            <div>Empates: <span className="contador">{empate}</span></div>
+            <div>Jugador 2: <span className="contador">{jugador2}</span></div>
           </div>
         </div>
         <div className="panel">

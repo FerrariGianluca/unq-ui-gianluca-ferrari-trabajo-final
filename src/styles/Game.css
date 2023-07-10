@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 500px;
+  min-height: 570px;
   width: 100%;
 }
 
@@ -68,6 +68,29 @@
 .game-info button:active{
   background-color: #FFF;
   color: #000;
+}
+
+.stats {
+  display: flex;
+  padding: 10px;
+  border: 3px double #000;
+  border-radius: 5px;
+  margin-top: auto;
+  background-color: rgb(156, 192, 110);
+}
+
+.stats > div {
+  margin: 5px;
+  padding: 10px;
+  background-color: rgb(156, 192, 110);
+  border: 3px double #000;
+  border-radius: 3px;
+}
+
+.contador {
+  color: black;
+  border: 1px solid #000;
+  background-color: #FFF;
 }
 
 .board{
