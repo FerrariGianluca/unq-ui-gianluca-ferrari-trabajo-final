@@ -6,7 +6,7 @@ import {
   FaHandLizard, 
   FaHandSpock } 
 from "react-icons/fa";
-import OptionsPanel from "./OptionsPanel";
+import OptionsPanel from "../components/OptionsPanel";
 import "../styles/Game.css";
 import optionsJSON from "../data/options.json"
 
