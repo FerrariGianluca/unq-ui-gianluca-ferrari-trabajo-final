@@ -77,6 +77,7 @@ const Game = () => {
     if(turn===0){
       setResult(getResult());
       setAction(getAction());
+
     }
   }, [turn])
 
@@ -122,6 +123,7 @@ const Game = () => {
           </div>
           <div className="game-info">
             { result && <div>{action}</div>}
+            { result && <button>Volver a jugar</button>}
           </div>
         </div>
         <div className="panel">
