@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import logo from '../img/pptls.png';
 import '../styles/Home.css';
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/game", { replace: true });
-  }
 
   return (
     <div className="home-container">
@@ -16,8 +11,8 @@ const Home = () => {
         <img src={logo} alt="Logo 'piedra, papel, tijera, lagarto, spock'" />
       </div>
       <div className="home-options-container">
-        <button onClick={handleClick} className="home-option">1 JUGADOR</button>
-        <button onClick={handleClick} className="home-option">2 JUGADORES</button>
+        <Link to="/game/singleplayer" className="home-option">1 JUGADOR</Link>
+        <Link to="/game/multiplayer" className="home-option">2 JUGADORES</Link>
       </div>
     </div>
   )

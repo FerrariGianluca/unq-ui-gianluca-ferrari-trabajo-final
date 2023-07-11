@@ -42,7 +42,8 @@
   color: white;
   background-color: rgb(194, 162, 73);
   -webkit-text-stroke: 1px #000;
-  border: none;
+  text-decoration: none;
+  text-align: center;
 }
 
 .home-option:hover{
