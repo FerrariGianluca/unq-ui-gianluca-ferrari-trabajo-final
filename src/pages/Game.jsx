@@ -8,7 +8,8 @@ import {
 from "react-icons/fa";
 import OptionsPanel from "../components/OptionsPanel";
 import "../styles/Game.css";
-import optionsJSON from "../data/options.json"
+import optionsJSON from "../data/options.json";
+import { useParams } from "react-router-dom";
 
 const Game = () => {
   const [choice1, setChoice1] = useState(null);
@@ -16,11 +17,11 @@ const Game = () => {
   const [turn, setTurn] = useState(1);
   const [result, setResult] = useState("");
   const [action, setAction] = useState("");
-  const [isDisabled, setIsDisabled] = useState(false);
   const [total, setTotal] = useState(0);
   const [jugador1, setJugador1] = useState(0);
   const [jugador2, setJugador2] = useState(0);
   const [empate, setEmpate] = useState(0);
+  const { mode } = useParams();
 
   const iconMap = {
     FaHandRock,
@@ -36,8 +37,18 @@ const Game = () => {
   }));
 
   const handleOptionSelect = (option) => {
-    setChoice1(option);
-    setTurn(2);
+    if (mode === "multiplayer") {
+      if (turn === 1) {
+        setChoice1(option);
+        setTurn(2);
+      } else {
+        setChoice2(option);
+        setTurn(0);
+      }
+    } else {
+      setChoice1(option);
+      setTurn(2);
+    }
   }
 
   //Indica si la opción1 le gana a la opción2
@@ -98,7 +109,7 @@ const Game = () => {
   }, [turn])
 
   useEffect(() => {
-    if (turn===2){
+    if (turn===2 && mode==="singleplayer"){
       const randomNumber = Math.floor(Math.random() * 5);
       const randomOption = options.find(option => option.id === randomNumber);
 
@@ -152,8 +163,9 @@ const Game = () => {
         <div className="panel">
           <div className="player">Jugador 2</div>
           <OptionsPanel 
-            options={options} 
-            isDisabled={true}
+            options={options}
+            onOptionSelect={handleOptionSelect}
+            isDisabled={mode!=="multiplayer" || turn!==2}
             isLeft={false}
             turn={turn} />
         </div>

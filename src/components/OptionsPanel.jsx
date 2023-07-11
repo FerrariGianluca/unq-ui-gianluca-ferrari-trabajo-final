@@ -14,7 +14,7 @@ const OptionsPanel = ( {options, onOptionSelect, isDisabled, isLeft, turn} ) => 
           className={isDisabled ? "disabled" : "option"}
           key={option.id}
           name={option.name}
-          disabled={isDisabled || turn !== 1}
+          disabled={isDisabled}
           onClick={() => handleChoice(option)}>
           <option.emoji style={{color: option.color, transform: isLeft ? 'scaleX(-1)' : 'none'}} size={50} />
         </button>
