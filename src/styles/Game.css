@@ -70,7 +70,15 @@
   color: #000;
 }
 
-.stats {
+.stats{
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  gap: 50px;
+}
+
+.stats-info {
   display: flex;
   padding: 10px;
   border: 3px double #000;
@@ -79,12 +87,33 @@
   background-color: rgb(156, 192, 110);
 }
 
-.stats > div {
+.stats-info > div {
   margin: 5px;
   padding: 10px;
   background-color: rgb(156, 192, 110);
   border: 3px double #000;
   border-radius: 3px;
+}
+
+.back{
+  text-decoration: none;
+  color: #000;
+  background-color: #FFF;
+  border: 1px solid #000;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.back:hover{
+  color: #FFF;
+  background-color: #000;
+  border: 1px solid #FFF;
+}
+
+.back:active{
+  color: #FFF;
+  background-color: rgb(136, 136, 136);
+  border: 1px solid #FFF;
 }
 
 .contador {
