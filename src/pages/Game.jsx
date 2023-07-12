@@ -11,8 +11,9 @@ import "../styles/Game.css";
 import optionsJSON from "../data/options.json";
 import { useParams, Link } from "react-router-dom";
 import Panel from "../components/Panel";
-import GameInfo from "../components/GameInfo";
+import GameResult from "../components/GameResult";
 import Board from "../components/Board";
+import GameInfo from "../components/GameInfo";
 
 const Game = () => {
   const [choice1, setChoice1] = useState(null);
@@ -155,19 +156,23 @@ const Game = () => {
           jugador={1}  
         />
         <div className="game-container">
-          <GameInfo mode={mode} turn={turn} result={result} />
-          <Board mode={mode} choice1={choice1} choice2={choice2} />
-          
-          <div className="game-info">
-            { result && <div>{action}</div>}
-            {result && 
-              (mode === "multiplayer" ? (
-                showRestartButton && <button onClick={handleRestart}>Volver a jugar</button>
-              ) : (
-                <button onClick={handleRestart}>Volver a jugar</button>
-              )
-            )}
-          </div>
+          <GameResult
+            mode={mode} 
+            turn={turn} 
+            result={result} 
+          />
+          <Board 
+            mode={mode} 
+            choice1={choice1} 
+            choice2={choice2} 
+          />
+          <GameInfo 
+            result={result} 
+            action={action}
+            showRestartButton={showRestartButton}
+            handleRestart={handleRestart}
+            mode={mode}
+          />
           <div className="stats">
             <div className="stats-info">
               <div>Total partidas jugadas: <span className="contador">{total}</span></div>

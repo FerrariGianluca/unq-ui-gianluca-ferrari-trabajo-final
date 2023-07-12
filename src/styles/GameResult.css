@@ -1,0 +1,9 @@
+.game-info{
+  font-size: 50px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-content: space-around;
+  gap: 30px;
+}
