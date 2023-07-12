@@ -65,10 +65,10 @@ const Game = () => {
     setTotal(total + 1)
     if (beats(choice1, choice2)){
       setJugador1(jugador1 + 1);
-      return "Gana el Jugador 1"
+      return mode === "singleplayer"? "Gana el Jugador" : "Gana el Jugador 1";
     } else if (beats(choice2, choice1)){
       setJugador2(jugador2 + 1);
-      return "Gana el Jugador 2"
+      return mode === "singleplayer"? "Gana la Computadora" : "Gana el Jugador 2";
     } else {
       setEmpate(empate + 1);
       return "Empate"
@@ -125,7 +125,7 @@ const Game = () => {
       <div className="title">Piedra - Papel - Tijera - Lagarto - Spock</div>
       <div className="container">
         <div className="panel">
-          <div className="player">Jugador 1</div>
+          <div className="player">{mode === "singleplayer"? "Jugador" : "Jugador 1"}</div>
           <OptionsPanel 
             options={options} 
             onOptionSelect={handleOptionSelect}
@@ -136,8 +136,10 @@ const Game = () => {
         </div>
         <div className="game-container">
           <div className="game-info">
-            { turn === 1 ? 'Es el turno del Jugador 1'
-            : turn === 2 ? 'Es el turno del Jugador 2'
+            { turn === 1 ? (mode === 'singleplayer'? 'Es el turno del Jugador' 
+                            : 'Es el turno del Jugador 1')
+            : turn === 2 ? (mode === 'singleplayer'? 'Es el turno de la Computadora' 
+                            : 'Es el turno del Jugador 2')
             : result }
           </div>
           <div className="board">
@@ -161,7 +163,7 @@ const Game = () => {
           </div>
         </div>
         <div className="panel">
-          <div className="player">Jugador 2</div>
+          <div className="player">{mode === "singleplayer"? "Computadora" : "Jugador 2"}</div>
           <OptionsPanel 
             options={options}
             onOptionSelect={handleOptionSelect}
