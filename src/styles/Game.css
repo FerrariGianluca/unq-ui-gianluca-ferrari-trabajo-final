@@ -40,23 +40,6 @@
   gap: 50px;
 }
 
-.stats-info {
-  display: flex;
-  padding: 10px;
-  border: 3px double #000;
-  border-radius: 5px;
-  margin-top: auto;
-  background-color: rgb(156, 192, 110);
-}
-
-.stats-info > div {
-  margin: 5px;
-  padding: 10px;
-  background-color: rgb(156, 192, 110);
-  border: 3px double #000;
-  border-radius: 3px;
-}
-
 .back{
   text-decoration: none;
   color: #000;
@@ -76,12 +59,6 @@
   color: #FFF;
   background-color: rgb(136, 136, 136);
   border: 1px solid #FFF;
-}
-
-.contador {
-  color: black;
-  border: 1px solid #000;
-  background-color: #FFF;
 }
 
 span{

@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { 
-  FaHandRock, 
-  FaHandPaper, 
-  FaHandScissors, 
-  FaHandLizard, 
-  FaHandSpock } 
-from "react-icons/fa";
-import OptionsPanel from "../components/OptionsPanel";
-import "../styles/Game.css";
+import { FaHandRock, FaHandPaper, FaHandScissors, FaHandLizard, FaHandSpock } from "react-icons/fa";
 import optionsJSON from "../data/options.json";
 import { useParams, Link } from "react-router-dom";
 import Panel from "../components/Panel";
 import GameResult from "../components/GameResult";
 import Board from "../components/Board";
 import GameInfo from "../components/GameInfo";
+import Stats from "../components/Stats"
+import "../styles/Game.css";
 
 const Game = () => {
   const [choice1, setChoice1] = useState(null);
@@ -174,12 +168,12 @@ const Game = () => {
             mode={mode}
           />
           <div className="stats">
-            <div className="stats-info">
-              <div>Total partidas jugadas: <span className="contador">{total}</span></div>
-              <div>Jugador 1: <span className="contador">{jugador1}</span></div>
-              <div>Empates: <span className="contador">{empate}</span></div>
-              <div>Jugador 2: <span className="contador">{jugador2}</span></div>
-            </div>
+            <Stats 
+              total={total}
+              jugador1={jugador1}
+              empate={empate}
+              jugador2={jugador2}
+            />
             <Link to="/home" className="back">Volver al inicio</Link>
           </div>
         </div>
