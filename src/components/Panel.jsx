@@ -24,7 +24,7 @@ const Panel = ({ mode, turn, options, handleOptionSelect, jugador }) => {
         options={options} 
         onOptionSelect={handleOptionSelect}
         isDisabled={handleDisabled()}
-        isLeft={true}
+        isLeft={jugador===1}
         turn={turn}
       />
     </div>
