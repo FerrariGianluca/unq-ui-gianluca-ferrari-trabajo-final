@@ -4,8 +4,7 @@ import {
   FaHandPaper, 
   FaHandScissors, 
   FaHandLizard, 
-  FaHandSpock,
-  FaQuestion } 
+  FaHandSpock } 
 from "react-icons/fa";
 import OptionsPanel from "../components/OptionsPanel";
 import "../styles/Game.css";
@@ -13,6 +12,7 @@ import optionsJSON from "../data/options.json";
 import { useParams, Link } from "react-router-dom";
 import Panel from "../components/Panel";
 import GameInfo from "../components/GameInfo";
+import Board from "../components/Board";
 
 const Game = () => {
   const [choice1, setChoice1] = useState(null);
@@ -25,8 +25,7 @@ const Game = () => {
   const [jugador2, setJugador2] = useState(0);
   const [empate, setEmpate] = useState(0);
   const { mode } = useParams();
-  const [icon1, setIcon1] = useState(null);
-  const [icon2, setIcon2] = useState(null);
+
   const [showRestartButton, setShowRestartButton] = useState(false);
 
   const iconMap = {
@@ -119,21 +118,6 @@ const Game = () => {
   }, [result, choice2])
 
   useEffect(() => {
-    if (choice1) {
-      setIcon1(<FaQuestion size={100}/>)
-    }
-    if (choice2) {
-      setIcon2(<FaQuestion size={100}/>)
-      setTimeout(() => {
-        setIcon1(<choice1.emoji style={{color: choice1.color, margin: 'auto', transform: 'scaleX(-1)'}} size={100}/>)
-      }, 1500);
-      setTimeout(() => {
-        setIcon2(<choice2.emoji style={{color: choice2.color, margin: 'auto'}} size={100}/>)
-      }, 1500);
-    }
-  }, [choice1, choice2])
-
-  useEffect(() => {
     if(turn===0 && !result && mode==="multiplayer"){
       setResult("Cargando resultado...")
       setTimeout(() => {
@@ -172,23 +156,8 @@ const Game = () => {
         />
         <div className="game-container">
           <GameInfo mode={mode} turn={turn} result={result} />
-          <div className="board">
-            <div className="choice">
-              {choice1 && (mode==="singleplayer" ? (
-                <choice1.emoji style={{color: choice1.color, margin: 'auto', transform: 'scaleX(-1)'}} size={100}/>
-              ) : (
-                icon1
-              ))}
-            </div>
-            <div className="vs">VS</div>
-            <div className="choice">
-              {choice2 && (mode==="singleplayer" ? (
-                <choice2.emoji style={{color: choice2.color, margin: 'auto'}} size={100}/>
-              ) : (
-                icon2
-              ))}
-            </div>
-          </div>
+          <Board mode={mode} choice1={choice1} choice2={choice2} />
+          
           <div className="game-info">
             { result && <div>{action}</div>}
             {result && 
