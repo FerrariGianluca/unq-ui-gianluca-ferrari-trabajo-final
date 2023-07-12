@@ -23,6 +23,9 @@ const Game = () => {
   const [jugador2, setJugador2] = useState(0);
   const [empate, setEmpate] = useState(0);
   const { mode } = useParams();
+  const [icon1, setIcon1] = useState(null);
+  const [icon2, setIcon2] = useState(null);
+  const [showRestartButton, setShowRestartButton] = useState(false);
 
   const iconMap = {
     FaHandRock,
@@ -43,8 +46,8 @@ const Game = () => {
         setChoice1(option);
         setTurn(2);
       } else {
-        setChoice2(option);
-        setTurn(0);
+        setChoice2(option)
+        setTurn(0)
       }
     } else {
       setChoice1(option);
@@ -103,7 +106,40 @@ const Game = () => {
   }
 
   useEffect(() => {
-    if(turn===0 && !result){
+    if (result && choice2) {
+      const timer = setTimeout(() => {
+        setShowRestartButton(true);
+      }, 1500);
+      return () => clearTimeout(timer);
+    } else {
+      setShowRestartButton(false);
+    }
+  }, [result, choice2])
+
+  useEffect(() => {
+    if (choice1) {
+      setIcon1(<FaQuestion size={100}/>)
+    }
+    if (choice2) {
+      setIcon2(<FaQuestion size={100}/>)
+      setTimeout(() => {
+        setIcon1(<choice1.emoji style={{color: choice1.color, margin: 'auto', transform: 'scaleX(-1)'}} size={100}/>)
+      }, 1500);
+      setTimeout(() => {
+        setIcon2(<choice2.emoji style={{color: choice2.color, margin: 'auto'}} size={100}/>)
+      }, 1500);
+    }
+  }, [choice1, choice2])
+
+  useEffect(() => {
+    if(turn===0 && !result && mode==="multiplayer"){
+      setResult("Cargando resultado...")
+      setTimeout(() => {
+        setResult(getResult());
+        setAction(getAction());
+      }, 1500);
+    }
+    if(turn===0 && !result && mode==="singleplayer"){
       setResult(getResult());
       setAction(getAction());
     }
@@ -148,7 +184,7 @@ const Game = () => {
               {choice1 && (mode==="singleplayer" ? (
                 <choice1.emoji style={{color: choice1.color, margin: 'auto', transform: 'scaleX(-1)'}} size={100}/>
               ) : (
-                <FaQuestion size={100}/>
+                icon1
               ))}
             </div>
             <div className="vs">VS</div>
@@ -156,13 +192,19 @@ const Game = () => {
               {choice2 && (mode==="singleplayer" ? (
                 <choice2.emoji style={{color: choice2.color, margin: 'auto'}} size={100}/>
               ) : (
-                <FaQuestion size={100}/>
+                icon2
               ))}
             </div>
           </div>
           <div className="game-info">
             { result && <div>{action}</div>}
-            { result && <button onClick={handleRestart}>Volver a jugar</button>}
+            {result && 
+              (mode === "multiplayer" ? (
+                showRestartButton && <button onClick={handleRestart}>Volver a jugar</button>
+              ) : (
+                <button onClick={handleRestart}>Volver a jugar</button>
+              )
+            )}
           </div>
           <div className="stats">
             <div>Total partidas jugadas: <span className="contador">{total}</span></div>
