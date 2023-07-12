@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import "../styles/OptionsPanel.css";
 
-const OptionsPanel = ( {options, onOptionSelect, isDisabled, isLeft, turn} ) => {
+const OptionsPanel = ( {options, onOptionSelect, isDisabled, isLeft} ) => {
   const handleChoice = (option) => {
     onOptionSelect(option);
   }

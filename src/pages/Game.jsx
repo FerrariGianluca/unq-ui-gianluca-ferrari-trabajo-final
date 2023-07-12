@@ -11,6 +11,7 @@ import OptionsPanel from "../components/OptionsPanel";
 import "../styles/Game.css";
 import optionsJSON from "../data/options.json";
 import { useParams, Link } from "react-router-dom";
+import Panel from "../components/Panel";
 
 const Game = () => {
   const [choice1, setChoice1] = useState(null);
@@ -161,16 +162,13 @@ const Game = () => {
     <>
       <div className="title">Piedra - Papel - Tijera - Lagarto - Spock</div>
       <div className="container">
-        <div className="panel">
-          <div className="player">{mode === "singleplayer"? "Jugador" : "Jugador 1"}</div>
-          <OptionsPanel 
-            options={options} 
-            onOptionSelect={handleOptionSelect}
-            isDisabled={turn !== 1}
-            isLeft={true}
-            turn={turn}
-          />
-        </div>
+        <Panel 
+          mode={mode} 
+          turn={turn} 
+          options={options} 
+          handleOptionSelect={handleOptionSelect}
+          jugador={1}  
+        />
         <div className="game-container">
           <div className="game-info">
             { turn === 1 ? (mode === 'singleplayer'? 'Es el turno del Jugador' 
@@ -216,15 +214,12 @@ const Game = () => {
             <Link to="/home" className="back">Volver al inicio</Link>
           </div>
         </div>
-        <div className="panel">
-          <div className="player">{mode === "singleplayer"? "Computadora" : "Jugador 2"}</div>
-          <OptionsPanel 
-            options={options}
-            onOptionSelect={handleOptionSelect}
-            isDisabled={mode!=="multiplayer" || turn!==2}
-            isLeft={false}
-            turn={turn} />
-        </div>
+        <Panel 
+          mode={mode} 
+          turn={turn} 
+          options={options} 
+          handleOptionSelect={handleOptionSelect}
+          jugador={2}/>
       </div>
     </>
   );
