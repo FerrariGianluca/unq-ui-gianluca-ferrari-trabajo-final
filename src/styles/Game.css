@@ -32,35 +32,6 @@
   width: 100%;
 }
 
-.game-info{
-  font-size: 50px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-  align-content: space-around;
-  gap: 30px;
-}
-
-.game-info button{
-  padding: 20px;
-  width: 100%;
-  background-color: #000;
-  color: #FFF;
-  border-radius: 10px;
-  border: none;
-  font-size: 20px;
-}
-
-.game-info button:hover{
-  background-color: rgb(136, 136, 136);
-}
-
-.game-info button:active{
-  background-color: #FFF;
-  color: #000;
-}
-
 .stats{
   display: flex;
   align-items: center;

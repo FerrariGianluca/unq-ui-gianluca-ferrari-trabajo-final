@@ -12,6 +12,7 @@ import "../styles/Game.css";
 import optionsJSON from "../data/options.json";
 import { useParams, Link } from "react-router-dom";
 import Panel from "../components/Panel";
+import GameInfo from "../components/GameInfo";
 
 const Game = () => {
   const [choice1, setChoice1] = useState(null);
@@ -170,13 +171,7 @@ const Game = () => {
           jugador={1}  
         />
         <div className="game-container">
-          <div className="game-info">
-            { turn === 1 ? (mode === 'singleplayer'? 'Es el turno del Jugador' 
-                            : 'Es el turno del Jugador 1')
-            : turn === 2 ? (mode === 'singleplayer'? 'Es el turno de la Computadora' 
-                            : 'Es el turno del Jugador 2')
-            : result }
-          </div>
+          <GameInfo mode={mode} turn={turn} result={result} />
           <div className="board">
             <div className="choice">
               {choice1 && (mode==="singleplayer" ? (
