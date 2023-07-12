@@ -4,7 +4,8 @@ import {
   FaHandPaper, 
   FaHandScissors, 
   FaHandLizard, 
-  FaHandSpock } 
+  FaHandSpock,
+  FaQuestion } 
 from "react-icons/fa";
 import OptionsPanel from "../components/OptionsPanel";
 import "../styles/Game.css";
@@ -144,11 +145,19 @@ const Game = () => {
           </div>
           <div className="board">
             <div className="choice">
-              {choice1 && <choice1.emoji style={{color: choice1.color, margin: 'auto', transform: 'scaleX(-1)'}} size={100}/>}
+              {choice1 && (mode==="singleplayer" ? (
+                <choice1.emoji style={{color: choice1.color, margin: 'auto', transform: 'scaleX(-1)'}} size={100}/>
+              ) : (
+                <FaQuestion size={100}/>
+              ))}
             </div>
             <div className="vs">VS</div>
             <div className="choice">
-              {choice2 && <choice2.emoji style={{color: choice2.color, margin: 'auto'}} size={100}/>}
+              {choice2 && (mode==="singleplayer" ? (
+                <choice2.emoji style={{color: choice2.color, margin: 'auto'}} size={100}/>
+              ) : (
+                <FaQuestion size={100}/>
+              ))}
             </div>
           </div>
           <div className="game-info">
