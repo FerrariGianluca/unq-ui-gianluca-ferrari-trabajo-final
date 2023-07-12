@@ -173,6 +173,7 @@ const Game = () => {
               jugador1={jugador1}
               empate={empate}
               jugador2={jugador2}
+              mode={mode}
             />
             <Link to="/home" className="back">Volver al inicio</Link>
           </div>
