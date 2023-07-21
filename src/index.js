@@ -7,7 +7,7 @@ import Router from "./router/Router";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/unq-ui-gianluca-ferrari-trabajo-final">
       <Router />
     </BrowserRouter>
   </React.StrictMode>

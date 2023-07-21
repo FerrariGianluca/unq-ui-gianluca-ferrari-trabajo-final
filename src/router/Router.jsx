@@ -14,10 +14,10 @@ const Router = () => {
       path: "/game/:mode",
       element: <Game />
     },
-    /*{
+    {
       path: "*",
       element: <Navigate to="/home" />,
-    },*/
+    },
   ]);
 
   return routes;
