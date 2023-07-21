@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/unq-ui-gianluca-ferrari-trabajo-final/static/css/main.d8744502.css",
+    "main.js": "/unq-ui-gianluca-ferrari-trabajo-final/static/js/main.091f121e.js",
+    "static/js/787.2f9374ea.chunk.js": "/unq-ui-gianluca-ferrari-trabajo-final/static/js/787.2f9374ea.chunk.js",
+    "static/media/pptls.png": "/unq-ui-gianluca-ferrari-trabajo-final/static/media/pptls.ef654789203fe56b8750.png",
+    "index.html": "/unq-ui-gianluca-ferrari-trabajo-final/index.html",
+    "main.d8744502.css.map": "/unq-ui-gianluca-ferrari-trabajo-final/static/css/main.d8744502.css.map",
+    "main.091f121e.js.map": "/unq-ui-gianluca-ferrari-trabajo-final/static/js/main.091f121e.js.map",
+    "787.2f9374ea.chunk.js.map": "/unq-ui-gianluca-ferrari-trabajo-final/static/js/787.2f9374ea.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8744502.css",
+    "static/js/main.091f121e.js"
+  ]
+}
